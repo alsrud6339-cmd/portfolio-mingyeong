@@ -7,16 +7,16 @@
 /* 각 카드는 Bebas Neue "ME__N" 텍스트 + 사진이 "A" 위치에 삽입되는 구성 */
 export const meanCards = [
   {
-    photo: "/portfolio/works-photo-right.png",
+    photo: "/portfolio/works-mean-photo2.png",
     alt: "MEAN 컴포지션 좌측 — 안경 인물 사진",
-    width: 1280,
-    height: 911,
+    width: 868,
+    height: 679,
   },
   {
-    photo: "/portfolio/works-photo-left.png",
+    photo: "/portfolio/works-mean-photo3.png",
     alt: "MEAN 컴포지션 우측 — 베일 인물 사진",
-    width: 1920,
-    height: 1080,
+    width: 1019,
+    height: 725,
   },
 ];
 

@@ -151,10 +151,10 @@
    overflow: hidden — 사진이 컨테이너 밖으로 넘치지 않도록 클리핑 */
 .aboutPhotos {
   position: sticky;                      /* 스크롤 시 화면에 고정 */
-  top: 0;                                /* 뷰포트 상단에 부착 — SectionNav가 비고정이므로 top: 0 */
+  top: 80px;                                /* 뷰포트 상단에 부착 — SectionNav가 비고정이므로 top: 0 */
   align-self: start;                     /* 그리드 텍스트 높이에 맞춰 늘어나지 않음 */
   height: clamp(450px, 30vw, 550px);    /* 사진 콜라주 전체 포함 높이 */
-  max-height: calc(100dvh - 70px);      /* 뷰포트 - 섹션바(~60px+여유) → 바 영역 침범 방지 */
+  max-height: calc(100dvh);      /* 뷰포트 - 섹션바(~60px+여유) → 바 영역 침범 방지 */
   overflow: hidden;                      /* 사진 넘침 방지 — 섹션바 영역 깔끔하게 분리 */
 }
 
@@ -262,77 +262,24 @@
   gap: clamp(10px, 1.04vw, 20px);      /* 자식(MEAN·TravelZine·CardGrid) 간 일관된 간격 */
 }
 
-/* MEAN 카드 행 — 두 카드 가로 나란히 (Figma: 갭 없이 인접) */
-.meanCardRow {
-  display: grid;                              /* 2열 그리드 */
-  grid-template-columns: 1fr 1fr;            /* 균등 2열 */
-  gap: 0;                                     /* Figma: 카드 사이 갭 없음 */
+/* ── MEAN 이미지 행 — 두 이미지 가로 나란히 ── */
+.meanRow {
+  display: flex;                    /* 가로 나란히 */
+  gap: 0;                           /* 갭 없음 — 밀착 */
+  width: 100%;                      /* 부모 너비 전체 */
 }
 
-/* MEAN 카드 — 회색 배경 래퍼 (Figma 265:189) */
-.meanCard {
-  background: var(--home-bg-gray);             /* #e8e8e8 — 밝은 회색 배경 */
-  border: 1px solid var(--home-border-gray);   /* #d7d7d7 — 미세한 테두리 */
-  border-radius: 8px;                          /* Figma: 8px 둥근 모서리 */
-  padding: clamp(3px, 0.26vw, 5px);              /* 다크 프레임 주변 회색 여백 — nameCard와 통일 */
-  container-type: inline-size;                 /* 컨테이너 쿼리 활성화 — 자식 요소가 카드 크기 참조 */
+/* MEAN 이미지 래퍼 — fill 기준점 */
+.meanImgWrap {
+  position: relative;               /* fill 이미지 기준점 */
+  flex: 1;                          /* 균등 분배 */
+  aspect-ratio: 279 / 112;          /* Figma 카드 비율 */
 }
 
-/* 이미지 프레임 (작품) */
-.workFrame {
-  border: 5px solid var(--home-frame-border); /* #2b2929 — 진한 다크 테두리 */
-  border-radius: 1px;                         /* Figma: 1px 미세 라운딩 */
-  overflow: hidden;         
-                    /* 이미지 넘침 방지 */
-}
-
-/* ── MEAN 컴포지션 ── */
-/* 캔버스 측정 기반: Bebas Neue 캡하이트 비율 = 0.6616 */
-/* 음수 마진으로 line-height 여분 제거 → SVG처럼 글리프에 딱 맞는 높이 */
-.meanComposition {
-  display: flex;                    /* 가로 배치: M → E → 사진 → N */
-  align-items: center;              /* 세로 중앙 정렬 */
-  justify-content: center;          /* 가로 중앙 */
-  gap: 0.3cqi;                      /* 글자-글자, 글자-이미지 간격 — 최소화하여 밀착 */
-  padding: 0.5cqi;                  /* 다크 프레임 안쪽 여백 — 최소화하여 꽉 찬 느낌 */
-  width: 100%;                      /* 프레임 전체 너비 */
-  background: var(--home-bg-gray);  /* #e8e8e8 — 카드 내부 배경 */
-}
-
-/* MEAN 텍스트 — Bebas Neue */
-/* 음수 마진으로 line-height 박스를 시각적 캡하이트에 맞게 축소 */
-/* 캡 위 공간: 0.1635em, 캡 아래 공간: 0.175em (캔버스 측정값) */
-.meanLetter {
-  font-family: var(--font-bebas-neue), "Bebas Neue", sans-serif; /* Figma 지정 폰트 */
-  font-weight: 400;                 /* Regular */
-  font-size: 48cqi;                 /* 시각적 캡하이트 = 48 × 0.6616 = 31.76cqi — 카드를 꽉 채움 */
-  line-height: 1;                   /* CSS 박스 = 48cqi */
-  margin-top: -0.1635em;            /* 캡하이트 위 빈 공간 제거 (65.4/400) */
-  margin-bottom: -0.175em;          /* 베이스라인 아래 빈 공간 제거 (70/400) */
-  color: var(--home-frame-border);  /* #2b2929 — Figma 텍스트 색상 */
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Figma: 미세 드롭 쉐도우 */
-  user-select: none;                /* 텍스트 선택 방지 (장식 요소) */
-  flex-shrink: 0;                   /* 축소 방지 */
-}
-
-/* MEAN 사진 — "A" 위치 (Figma SVG 마스크: 414×539, rx=111) */
-/* 높이 = 캡하이트와 정확히 동일 (font-size × 0.6616) */
-/* 글자 상단(캡라인) = 사진 상단, 글자 하단(베이스라인) = 사진 하단 */
-.meanPhoto {
-  flex-shrink: 0;                   /* 축소 방지 */
-  height: 31.76cqi;                 /* 48cqi × 0.6616 — 캡하이트와 정확히 일치 */
-  aspect-ratio: 414 / 539;          /* Figma SVG 마스크 비율 */
-  border-radius: 26.8%;             /* Figma: rx=111/414 — 둥근 사각형 */
-  overflow: hidden;                 /* 사진 잘림 — 둥근 형태 유지 */
-  isolation: isolate;               /* border-radius 클리핑 보장 */
-}
-
-/* MEAN 사진 이미지 — object-cover로 영역 채움 */
-.meanPhotoImg {
-  width: 100%;                      /* 컨테이너 채움 */
-  height: 100%;                     /* 컨테이너 채움 */
-  object-fit: cover;                /* 비율 유지하며 영역 채움 */
-  object-position: center;          /* 중앙 정렬 — 얼굴 중심 */
+/* MEAN 이미지 — 프레임에 맞춰 채움 */
+.meanImg {
+  object-fit: cover;                /* 비율 유지하며 프레임 채움 */
+  object-position: center;          /* 중앙 정렬 */
 }
 
 /* ── Travel Zine 하단 섹션 (Figma 265:375) ──
@@ -576,9 +523,8 @@
     display: none;              /* 태블릿: 사진 콜라주 숨김 */
   }
 
-  .meanCardRow {
-    grid-template-columns: 1fr; /* 태블릿: 단일 컬럼으로 전환 */
-    gap: 10px;                  /* 세로 배치 시 간격 추가 */
+  .meanRow > *:nth-child(2) {
+    display: none;                    /* 태블릿: 두 번째 이미지 숨김 */
   }
 
   .cardGrid {
