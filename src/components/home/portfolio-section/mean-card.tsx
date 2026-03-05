@@ -19,7 +19,7 @@ export default function MeanCard() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.2 }}
         >
-          <Link href="/mean-girls" className={styles.meanLink}>
+          <Link href="/mean-girls" className={styles.portfolioItem}>
             <Image
               src={card.src}
               alt={card.alt}
@@ -28,6 +28,10 @@ export default function MeanCard() {
               className={styles.meanImg}
               sizes="50vw"
             />
+            {/* ── 호버 오버레이 (Figma 460:329) ── */}
+            <div className={styles.portfolioOverlay}>
+              <span className={styles.viewMoreLabel}>VIEW MORE</span>
+            </div>
           </Link>
         </motion.div>
       ))}

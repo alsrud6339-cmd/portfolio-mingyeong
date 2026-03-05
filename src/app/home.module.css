@@ -79,8 +79,8 @@
   /* 일반 문서 흐름 — 스크롤에 따라 이동하지 않음 */
   z-index: 50;
   /* 다른 콘텐츠 위에 표시 */
-  background: var(--home-bg-darkgray);
-  /* 다크 그레이 공통 배경 */
+  background: transparent;
+  /* 배경 투명 */
   border-radius: 10px;
   /* 섹션 컨테이너 공통 라운딩 */
   padding: clamp(12px, 1.04vw, 20px) 0;
@@ -140,11 +140,15 @@
   color: #ffffff;
 }
 
-.navDetail .navLabelText {
+.navDetail .navLabelText,
+.navDetail .navNumber {
   color: #ffffff;
+  transition: color 0.25s ease;
 }
 
-.navDetail .navTab:hover {
+/* 호버 시 상세 페이지에서도 초록색으로 확실히 변경 */
+.navDetail .navTab:hover .navLabelText,
+.navDetail .navTab:hover .navNumber {
   color: var(--home-text-green);
 }
 
@@ -875,4 +879,59 @@
     /* 모바일에서 적당한 크기 */
     margin-top: 20px;
   }
+}
+
+/* ── 포트폴리오 공통 호버 효과 (Figma 460:329 반영) ── */
+.portfolioItem {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+/* 호버 시 배경 이미지 미세 확대 */
+.portfolioItem img {
+  transition: transform 0.5s ease;
+}
+
+.portfolioItem:hover img {
+  transform: scale(1.03);
+}
+
+/* 어두운 오버레이 */
+.portfolioOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  /* Figma: 어두운 반투명 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.portfolioItem:hover .portfolioOverlay {
+  opacity: 1;
+}
+
+/* VIEW MORE 라벨 */
+.viewMoreLabel {
+  color: #ffffff;
+  font-family: var(--font-oswald), "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  transform: translateY(10px);
+  transition: transform 0.3s ease;
+}
+
+.portfolioItem:hover .viewMoreLabel {
+  transform: translateY(0);
 }

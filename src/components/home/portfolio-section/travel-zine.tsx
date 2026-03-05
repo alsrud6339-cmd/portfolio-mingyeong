@@ -11,7 +11,7 @@ import worksBottomBgImg from "./assets/works-bottom-bg.png";
 /* ── 하단: Travel Zine 섹션 (Figma 265:375) ── */
 export default function TravelZine() {
   return (
-    <Link href="/travel-zine" className={styles.travelZineLink}>
+    <Link href="/travel-zine" className={styles.portfolioItem}>
       <div className={styles.travelZine}>
         {/* 다크 프레임 + 책장 배경 (Figma 265:377)
           프레임: left=0.85%, top=2.70%, w=98.36%, h=94.83% */}
@@ -40,6 +40,10 @@ export default function TravelZine() {
             ))}
           </div>
         </div>
+      </div>
+      {/* ── 호버 오버레이 (Figma 460:329) ── */}
+      <div className={styles.portfolioOverlay}>
+        <span className={styles.viewMoreLabel}>VIEW MORE</span>
       </div>
     </Link>
   );
