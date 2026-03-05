@@ -6,7 +6,7 @@ import Link from "next/link";
 import styles from "./mean-girls.module.css";
 
 // 이미지 자원들을 컴포넌트 내부에서 응집도 있게 관리하기 위해 임포트합니다.
-import navCatImg from "../shared/assets/nav-cat-silhouette.png"; // 네비게이션 고양이 이미지 임포트
+import navSheepImg from "../shared/assets/nav-sheep.png"; // 네비게이션 양 이미지 임포트 (고양이에서 양으로 변경)
 import detailBgImg from "../shared/assets/detail-bg.png"; // 배경 이미지 임포트
 import detailPhotoImg from "./assets/detail-photo.png"; // 상세 페이지 메인 사진 이미지 임포트
 import detailArrowImg from "./assets/detail-arrow.svg"; // 상세 페이지 화살표 SVG 임포트
@@ -51,7 +51,8 @@ export default function MeanGirlsDetail() {
                 <span className={styles.navLabel}>{tab.label}</span>
                 <span className={styles.navNum}>{tab.number}</span>
               </Link>
-              {i === 1 && <img src={navCatImg.src} alt="" className={styles.navCat} />}
+              {/* i === 1은 Travel zine 옆 양 (기존 고양이에서 양으로 변경) */}
+              {i === 1 && <img src={navSheepImg.src} alt="" className={styles.navCat} />}
             </span>
           ))}
         </nav>

@@ -159,16 +159,6 @@ const scatteredTexts: ScatteredText[] = [
     rotate: -3.88,
     skew: -0.21,
   },
-  {
-    /* "Etc..." — bbox(450, 1008, 144×80) → center(522, 1048) */
-    text: "Etc...",
-    centerX: "27.19%",
-    centerY: "99.23%",
-    fontSize: "clamp(28px, 3.39vw, 65px)",
-    color: "#d1d5df",
-    fontWeight: 400,
-    rotate: 0.71,
-  },
 ];
 
 /* ── CREATIve 바운딩 박스 중심 (scatteredTexts 밖이므로 별도 정의)
@@ -266,7 +256,7 @@ const vectorLines = [
    Figma: left 1837/1795/1757px → %로 변환 */
 const japaneseVertical = [
   { text: "逸れて도道はある", left: "95.68%", top: "28.31%" },
-  { text: "人生에キク", left: "93.49%", top: "28.5%" },
+  { text: "人生にキク", left: "93.49%", top: "28.5%" },
   { text: "ラジオ", left: "91.51%", top: "28.31%" },
 ];
 
@@ -451,47 +441,6 @@ export default function HeroSection() {
           </motion.div>
         ))}
 
-        {/* ── 일본어 꺾쇠 괄호 【 (세로 텍스트 사이 장식) ──
-           Figma 265:127 — left 1794px → 93.44%, top 401px → 37.97%, rotate 90°
-           Figma 265:128 — left 1804px → 93.96%, top 508px → 48.11%, rotate -90° + flipY */}
-        <motion.span
-          style={{
-            position: "absolute",
-            left: "93.44%",
-            top: "37.97%",
-            fontSize: "30px",
-            fontFamily:
-              "var(--font-comfortaa), var(--font-noto-sans-jp), Comfortaa, Noto Sans JP, sans-serif",
-            color: "#d1d5df",
-            letterSpacing: "-20.4px",
-            rotate: "90deg",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.3 }}
-        >
-          【
-        </motion.span>
-        <motion.span
-          style={{
-            position: "absolute",
-            left: "93.96%",
-            top: "48.11%",
-            fontSize: "30px",
-            fontFamily:
-              "var(--font-comfortaa), var(--font-noto-sans-jp), Comfortaa, Noto Sans JP, sans-serif",
-            color: "#d1d5df",
-            letterSpacing: "-20.4px",
-            rotate: "-90deg",
-            scaleY: -1 /* Figma: -scale-y-100 (상하 반전) */,
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.35 }}
-        >
-          【
-        </motion.span>
-
         {/* ── 일본어 인용구 (히어로 중앙) ──
            Figma: left 574px → 29.9%, top 435px → 41.19% */}
         <motion.div
@@ -589,15 +538,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 1.3 }}
-        >
-          <Image
-            src={heroMangaThumbImg}
-            alt="작은 만화 이미지"
-            width={64}
-            height={68}
-            className="object-cover"
-          />
-        </motion.div>
+        ></motion.div>
       </div>
     </section>
   );

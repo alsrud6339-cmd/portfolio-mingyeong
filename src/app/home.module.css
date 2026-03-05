@@ -150,8 +150,27 @@
   /* 보조 폰트 */
   font-size: clamp(14px, 0.94vw, 18px);
   /* 반응형: 14px → 18px */
-  color: rgba(220, 250, 219, 0.74);
-  /* Figma: 초록 계열 반투명 */
+  color: rgba(220, 250, 218, 0.74);
+  /* #DCFADA 74% 불투명도 */
+  line-height: 1;
+}
+
+/* 네비게이션 내 양(Sheep) 아이콘 — 절대 위치로 Name Card와 겹침 */
+.navSheepIcon {
+  position: absolute;
+  /* 부모 .navTabsRow 기준 절대 위치 */
+  left: 46.6%;
+  /* Figma 정밀 계산값: (5221-4710)/1097 = 46.6% */
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(50px, 4.17vw, 80px);
+  /* 피그마 사이즈 반영 */
+  height: auto;
+  pointer-events: none;
+  /* 클릭 방해 금지 */
+  opacity: 0.8;
+  z-index: 10;
+  /* 텍스트 위에 표시 */
 }
 
 /* (archive) 라벨 — Contact 탭 옆에 인라인 배치 */

@@ -4,8 +4,8 @@ import { Fragment } from "react";
 import Link from "next/link";
 import styles from "@/app/home.module.css";
 
-// 내비게이션 고양이 아이콘 임포트
-import navCatImg from "../../shared/assets/nav-cat-silhouette.png";
+// 네비게이션 양(Sheep) 아이콘 임포트
+import navSheepImg from "../../shared/assets/nav-sheep.png";
 
 /* ── 탭 타입 정의 ── */
 interface NavTab {
@@ -18,12 +18,13 @@ interface NavTab {
   hasArchive?: boolean;
 }
 
-/* ── 홈 페이지 기본 탭 데이터 ── */
+/* ── 홈 페이지 기본 탭 데이터 (Figma 460:140 매핑) ── */
 const homeTabs: NavTab[] = [
-  { label: "Travel zine", number: "[1]", targetId: "works" },
-  { label: "Name Card", number: "[2]", targetId: "namecards" },
-  { label: "Art Works", number: "[3]", targetId: "works" },
-  { label: "Contact", number: "[4]", targetId: "footer", hasArchive: true },
+  { label: "Mean Girls", number: "[1]", targetId: "works" },
+  { label: "Travel zine", number: "[2]", targetId: "works" },
+  { label: "Name Card", number: "[3]", targetId: "namecards" },
+  { label: "Commissioned Work", number: "[4]", targetId: "works" },
+  { label: "Contact", number: "[5]", targetId: "footer" },
 ];
 
 /* ── 서브 페이지 공통 탭 데이터 ── */
@@ -31,7 +32,8 @@ export const subPageTabs: NavTab[] = [
   { label: "Mean Girls", number: "[1]", href: "/mean-girls" },
   { label: "Travel zine", number: "[2]", href: "/#works" },
   { label: "Name Card", number: "[3]", href: "/#namecards" },
-  { label: "Contact", number: "[4]", href: "/#footer", hasArchive: true },
+  { label: "Commissioned Work", number: "[4]", href: "/#works" },
+  { label: "Contact", number: "[5]", href: "/#footer" },
 ];
 
 /* ── Props ── */
@@ -40,8 +42,6 @@ interface SectionNavProps {
   tabs?: NavTab[];
   /** 현재 활성 탭 라벨 — 하이라이트 표시 */
   activeTab?: string;
-  /** 아이콘 삽입 위치 (탭 index 뒤) — 기본 1 (두 번째 탭 뒤) */
-  iconAfterIndex?: number;
 }
 
 /**
@@ -49,11 +49,7 @@ interface SectionNavProps {
  * - 홈: targetId로 스크롤 이동
  * - 서브페이지: href로 라우팅
  */
-export default function SectionNav({
-  tabs = homeTabs,
-  activeTab,
-  iconAfterIndex = 1,
-}: SectionNavProps) {
+export default function SectionNav({ tabs = homeTabs, activeTab }: SectionNavProps) {
   /** 스크롤 이동 핸들러 */
   const handleScrollTo = (targetId: string) => {
     const el = document.getElementById(targetId);
@@ -65,7 +61,7 @@ export default function SectionNav({
   return (
     <nav className={styles.inPageNav}>
       <div className={styles.navTabsRow}>
-        {tabs.map((tab, i) => (
+        {tabs.map((tab) => (
           <Fragment key={tab.label}>
             {tab.href ? (
               /* ── 라우팅 모드 (Link) ── */
@@ -75,7 +71,7 @@ export default function SectionNav({
                 style={activeTab === tab.label ? { color: "var(--home-text-green)" } : undefined}
               >
                 <span className={styles.navTabTop}>
-                  {tab.label}
+                  <span className={styles.navLabelText}>{tab.label}</span>
                   {tab.hasArchive && <span className={styles.navArchive}>(archive)</span>}
                 </span>
                 <span className={styles.navNumber}>{tab.number}</span>
@@ -88,17 +84,17 @@ export default function SectionNav({
                 type="button"
               >
                 <span className={styles.navTabTop}>
-                  {tab.label}
+                  <span className={styles.navLabelText}>{tab.label}</span>
                   {tab.hasArchive && <span className={styles.navArchive}>(archive)</span>}
                 </span>
                 <span className={styles.navNumber}>{tab.number}</span>
               </button>
             )}
-
-            {/* 장식 아이콘 — 지정된 인덱스 뒤에 배치 */}
-            {i === iconAfterIndex && <img src={navCatImg.src} alt="" className={styles.navIcon} />}
           </Fragment>
         ))}
+
+        {/* ── 양(Sheep) 아이콘: 절대 위치 배치 (Name Card와 겹침) ── */}
+        <img src={navSheepImg.src} alt="" className={styles.navSheepIcon} />
       </div>
     </nav>
   );
