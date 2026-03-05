@@ -891,13 +891,13 @@
   text-decoration: none;
 }
 
-/* 호버 시 배경 이미지 미세 확대 */
+/* 호버 시 이미지 확대 제거 */
 .portfolioItem img {
   transition: transform 0.5s ease;
 }
 
 .portfolioItem:hover img {
-  transform: scale(1.03);
+  transform: none;
 }
 
 /* 어두운 오버레이 */
@@ -920,14 +920,13 @@
 
 /* VIEW MORE 라벨 */
 .viewMoreLabel {
-  color: #ffffff;
+  color: #dcfadb;
   font-family: var(--font-oswald), "Oswald", sans-serif;
-  font-weight: 500;
-  font-size: 24px;
-  letter-spacing: 0.1em;
-  padding: 12px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
+  font-weight: 400;
+  /* Regular */
+  font-size: clamp(20px, 1.67vw, 32px);
+  /* 1920px에서 32px */
+  letter-spacing: 0.15em;
   transform: translateY(10px);
   transition: transform 0.3s ease;
 }

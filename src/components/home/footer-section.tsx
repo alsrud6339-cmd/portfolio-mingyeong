@@ -69,7 +69,7 @@ export default function FooterSection() {
 
           {/* ── 큰 사진 프레임 (Figma 338:1070~1075) ──
               left=19%, top=19%, w=63%, h=47%
-              이미지 opacity: 65%, 보더 1px #d7d7d7, rounded 10px */}
+              이미지 opacity: 65%, rounded 10px */}
           <motion.div
             className="absolute overflow-hidden"
             style={{
@@ -77,7 +77,6 @@ export default function FooterSection() {
               top: "18.82%" /* (4172-4028) / 765 */,
               width: "63.03%" /* 525 / 833 */,
               height: "46.67%" /* 357 / 765 */,
-              border: "1px solid var(--home-border-gray)" /* #d7d7d7 외곽 보더 */,
               borderRadius: "10px" /* Figma: 둥근 모서리 */,
               zIndex: 2 /* 텍스트 위 */,
             }}
@@ -86,7 +85,7 @@ export default function FooterSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            {/* 내부 이미지 — 보더와 상하좌우 동일 간격(8px) */}
+            {/* 내부 이미지 — 상하좌우 동일 간격(8px) */}
             <div
               className="absolute overflow-hidden"
               style={{
@@ -124,8 +123,8 @@ export default function FooterSection() {
 
           {/* ── 작은 사진 프레임 (Figma 338:1024~1034) ──
               left=0.36%, top=45.88%, w=38.06%, h=54.12%
-              외곽: 1px #d7d7d7, rounded 8px
-              내부 이미지: opacity 74%, 1px #626262
+              외곽: rounded 8px
+              내부 이미지: opacity 74%
               로고 오버레이: opacity 41% */}
           <motion.div
             className="absolute overflow-hidden"
@@ -134,7 +133,6 @@ export default function FooterSection() {
               top: "45.88%" /* (4379-4028) / 765 */,
               width: "38.06%" /* 317 / 833 */,
               height: "54.12%" /* 414 / 765 */,
-              border: "1px solid var(--home-border-gray)" /* #d7d7d7 */,
               borderRadius: "8px" /* Figma: 8px */,
               zIndex: 2 /* 텍스트 위 */,
             }}
@@ -152,7 +150,6 @@ export default function FooterSection() {
                 top: "1.69%",
                 width: "94.64%" /* 300 / 317 */,
                 height: "96.62%" /* 400 / 414 */,
-                border: "1px solid #626262" /* Figma: 회색 보더 */,
                 borderRadius: "1px",
               }}
             >
