@@ -197,10 +197,6 @@ export default function AboutSection() {
         </span>
       ))}
 
-      <span className={styles.aboutLabel} style={{ left: "68.7%", top: "61.5%" }}>
-        (archive)
-      </span>
-
       <div className={styles.aboutGrid}>
         <div className={styles.aboutPhotos}>
           {photos.map((photo, index) => {
