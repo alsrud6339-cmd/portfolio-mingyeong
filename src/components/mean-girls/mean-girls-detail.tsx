@@ -8,7 +8,6 @@ import SectionNav from "@/components/home/shared/section-nav";
 // 이미지 자원들을 컴포넌트 내부에서 응집도 있게 관리하기 위해 임포트합니다.
 import detailBgImg from "../shared/assets/detail-bg.png"; // 배경 이미지 임포트
 import detailPhotoImg from "./assets/detail-photo.png"; // 상세 페이지 메인 사진 이미지 임포트
-import detailArrowImg from "./assets/detail-arrow.svg"; // 상세 페이지 화살표 SVG 임포트
 import detailCircleImg from "./assets/detail-circle.svg"; // 뷰 모어 원형 SVG 임포트
 
 /* ── 영화 타이틀 (Figma 402:600~606) ── */
@@ -165,29 +164,6 @@ export default function MeanGirlsDetail() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 55vw"
             />
-
-            {/* 미니 내비 (402:595~599) */}
-            <div className={styles.miniNav}>
-              <span>All Films</span>
-              <span>Collections</span>
-              <span>Docs</span>
-              <span>About</span>
-            </div>
-
-            {/* Mean girls 링크 (402:607) */}
-            <span className={styles.meanLink}>Mean girls</span>
-
-            {/* 영화 타이틀 목록 (402:600~606) */}
-            <div className={styles.films}>
-              {filmTitles.map((t) => (
-                <p key={t}>{t}</p>
-              ))}
-            </div>
-
-            {/* 화살표 (402:608) */}
-            <div className={styles.arrow}>
-              <Image src={detailArrowImg} alt="" fill />
-            </div>
 
             {/* VIEW MORE (402:610~612) */}
             <a

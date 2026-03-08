@@ -834,6 +834,11 @@
     /* 태블릿: 단일 컬럼 */
   }
 
+  .meanRow > div:nth-child(n + 2) {
+    display: none;
+    /* 태블릿 이하에서는 첫 번째 카드만 표시 */
+  }
+
   .cardGrid {
     grid-template-columns: 1fr;
     /* 단일 컬럼 */

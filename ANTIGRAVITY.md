@@ -296,4 +296,4 @@ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 - CSS Module: `src/app/home.module.css`
 - 애니메이션: `motion/react` (Framer Motion) — `initial` → `animate` / `whileInView` 패턴
 - 이미지: `public/portfolio/` — Next.js `<Image>` 우선, 장식 SVG는 `<img>`
-- 미사용 코드는 삭제
+- 미사용 코드및 asset은 삭제

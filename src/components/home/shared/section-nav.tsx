@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import styles from "@/app/home.module.css";
 
 // 네비게이션 양(Sheep) 아이콘 임포트
@@ -21,11 +22,11 @@ export interface NavTab {
 
 /* ── 기본 탭 데이터 (Figma 460:140 / 462:945 공통 매핑) ── */
 export const commonTabs: NavTab[] = [
-  { label: "Mean Girls", number: "[1]", targetId: "works", href: "/mean-girls" },
-  { label: "Travel zine", number: "[2]", targetId: "works", href: "/travel-zine" },
-  { label: "Name Card", number: "[3]", targetId: "namecards", href: "/name-card" },
-  { label: "Commissioned Work", number: "[4]", targetId: "works", href: "/commissioned-work" },
-  { label: "Contact", number: "[5]", targetId: "footer", href: "/#footer" },
+  { label: "Home", number: "[1]", targetId: "hero", href: "/" },
+  { label: "Mean Girls", number: "[2]", targetId: "works", href: "/mean-girls" },
+  { label: "Travel zine", number: "[3]", targetId: "works", href: "/travel-zine" },
+  { label: "Name Card", number: "[4]", targetId: "namecards", href: "/name-card" },
+  { label: "Commissioned Work", number: "[5]", targetId: "works", href: "/commissioned-work" },
 ];
 
 /* ── Props ── */
@@ -50,8 +51,14 @@ export default function SectionNav({
   activeTab,
   forceHref = false,
 }: SectionNavProps) {
+  const pathname = usePathname();
+
   /** 스크롤 이동 핸들러 */
   const handleScrollTo = (targetId: string) => {
+    if (targetId === "hero" && pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const el = document.getElementById(targetId);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -66,7 +73,9 @@ export default function SectionNav({
       <div className={styles.navTabsRow}>
         {tabs.map((tab) => {
           const isActive = activeTab === tab.label;
-          const isLink = forceHref || !!tab.href;
+          const isHomeOnRoot = tab.label === "Home" && pathname === "/";
+          // Home 탭이면서 현재 루트(/)에 있으면 버튼으로 동작시켜 스크롤 처리
+          const isLink = !isHomeOnRoot && (forceHref || !!tab.href);
 
           return (
             <Fragment key={tab.label}>
