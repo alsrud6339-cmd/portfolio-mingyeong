@@ -4,8 +4,11 @@
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .page {
-  min-height: 100vh;
+  height: 100vh;
+  /* 화면 높이에 고정 */
   background: white;
+  overflow: hidden;
+  /* 미세 스크롤 방지 */
 }
 
 /* ════════════════════════════════════════════════════════
@@ -14,12 +17,15 @@
    ════════════════════════════════════════════════════════ */
 .nav {
   position: relative;
-  z-index: 10; /* 모든 레이어 위에 표시 */
+  z-index: 10;
+  /* 모든 레이어 위에 표시 */
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(40px, 5.2vw, 100px); /* 탭 사이 간격 */
-  padding: clamp(16px, 1.67vw, 32px) 0; /* top=32 → 1.67vw */
+  gap: clamp(40px, 5.2vw, 100px);
+  /* 탭 사이 간격 */
+  padding: clamp(16px, 1.67vw, 32px) 0;
+  /* top=32 → 1.67vw */
 }
 
 .navItem {
@@ -37,15 +43,19 @@
 
 .navLabel {
   font-family: var(--font-oswald), "Oswald", sans-serif;
-  font-weight: 300; /* Oswald Light */
-  font-size: clamp(18px, 1.56vw, 30px); /* 30 / 1920 */
+  font-weight: 300;
+  /* Oswald Light */
+  font-size: clamp(18px, 1.56vw, 30px);
+  /* 30 / 1920 */
   color: white;
   line-height: normal;
 }
 
 .navActive .navLabel {
   color: #d4ead3;
-} /* Travel zine 활성 색상 */
+}
+
+/* Travel zine 활성 색상 */
 
 .navNum {
   font-family: var(--font-inter), "Inter", sans-serif;
@@ -67,8 +77,10 @@
 .card {
   position: relative;
   width: 100%;
-  aspect-ratio: 1920 / 1060; /* Figma 프레임 비율 */
-  background: white; /* 흰 프레임 역할 */
+  aspect-ratio: 1920 / 1060;
+  /* Figma 프레임 비율 */
+  background: white;
+  /* 흰 프레임 역할 */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -96,26 +108,36 @@
 }
 
 /* "ZINE" 워터마크 (Figma 402:482)
-   left=24, top=-303, 1100px, Oswald Bold, rgba(0,0,0,0.26), tracking=-16.5px */
+   배경을 가득 채우는 거대 텍스트 — 폰트 고유의 내외부 공백 최소화 */
 .zineText {
   position: absolute;
-  top: -15.78vw; /* -303 / 1920 */
-  left: 1.25vw; /* 24 / 1920 */
+  top: 47%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  /* 좌우 여백 제거를 위해 더 바깥으로 배치 */
+  margin: 0;
+  padding: 0;
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 700;
-  font-size: 57.29vw; /* 1100 / 1920 × 100 */
-  line-height: 0.8;
+  font-size: 60vw;
+  /* 크기를 더 키워 확실하게 채움 */
+  line-height: 0.75;
+  /* 폰트 내부의 상하 여백(Leading)을 극한으로 줄임 */
   color: rgba(0, 0, 0, 0.26);
   z-index: 3;
   pointer-events: none;
-  letter-spacing: -0.015em; /* -16.5 / 1100 */
+  letter-spacing: -0.05em;
+  /* 자간을 더 줄여 글자 사이 공백 최소화 */
+  display: block;
 }
 
 /* (archive) (Figma 402:481 — left=1454, top=568) */
 .archive {
   position: absolute;
-  left: 75.73vw; /* 1454 / 1920 */
-  top: 29.58vw; /* 568 / 1920 */
+  left: 75.73vw;
+  /* 1454 / 1920 */
+  top: 29.58vw;
+  /* 568 / 1920 */
   font-family: var(--font-inter), "Inter", sans-serif;
   font-weight: 400;
   font-size: clamp(14px, 0.94vw, 18px);
@@ -129,9 +151,12 @@
    ════════════════════════════════════════════════════════ */
 .leftBlock {
   position: absolute;
-  top: 5.16vw; /* 99 / 1920 */
-  left: 8.91vw; /* 171 / 1920 */
-  width: 31.15vw; /* ~598 / 1920 */
+  top: 5.16vw;
+  /* 99 / 1920 */
+  left: 8.91vw;
+  /* 171 / 1920 */
+  width: 31.15vw;
+  /* ~598 / 1920 */
   z-index: 5;
 }
 
@@ -179,9 +204,12 @@
 .green {
   color: #dcfadb;
 }
+
 .blue {
   color: #5b8aff;
-} /* Figma 402:491 — '이동' 강조 */
+}
+
+/* Figma 402:491 — '이동' 강조 */
 
 /* ════════════════════════════════════════════════════════
    중앙 사진 (Figma 402:485)
@@ -190,9 +218,12 @@
    ════════════════════════════════════════════════════════ */
 .centerPhoto {
   position: absolute;
-  top: 10.16vw; /* 195 / 1920 */
-  left: calc(50% - 49.27vw / 2); /* 가로 중앙 정렬 (transform 미사용 — Framer Motion 충돌 방지) */
-  width: 49.27vw; /* 946 / 1920 */
+  top: 10.16vw;
+  /* 195 / 1920 */
+  left: calc(50% - 49.27vw / 2);
+  /* 가로 중앙 정렬 (transform 미사용 — Framer Motion 충돌 방지) */
+  width: 49.27vw;
+  /* 946 / 1920 */
   aspect-ratio: 946 / 673;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   z-index: 4;
@@ -205,9 +236,12 @@
    ════════════════════════════════════════════════════════ */
 .earthImg {
   position: absolute;
-  top: 8.59vw; /* 165 / 1920 */
-  left: 74.74vw; /* 1435 / 1920 */
-  width: 15.47vw; /* 297 / 1920 */
+  top: 8.59vw;
+  /* 165 / 1920 */
+  left: 74.74vw;
+  /* 1435 / 1920 */
+  width: 15.47vw;
+  /* 297 / 1920 */
   aspect-ratio: 1;
   z-index: 5;
   border-radius: 50%;
@@ -221,8 +255,10 @@
    ════════════════════════════════════════════════════════ */
 .viewMore {
   position: absolute;
-  left: 45.16vw; /* 867 / 1920 */
-  top: 22.81vw; /* 438 / 1920 */
+  left: 45.16vw;
+  /* 867 / 1920 */
+  top: 22.81vw;
+  /* 438 / 1920 */
   width: clamp(100px, 9.74vw, 187px);
   height: clamp(100px, 9.74vw, 187px);
   display: flex;
@@ -255,9 +291,12 @@
    ════════════════════════════════════════════════════════ */
 .typographyBlock {
   position: absolute;
-  top: 30.42vw; /* 584 / 1920 */
-  right: 14.79vw; /* (1920-1636) / 1920 */
-  width: 25vw; /* ~480 / 1920 */
+  top: 30.42vw;
+  /* 584 / 1920 */
+  right: 14.79vw;
+  /* (1920-1636) / 1920 */
+  width: 25vw;
+  /* ~480 / 1920 */
   text-align: right;
   z-index: 5;
 }
@@ -291,8 +330,10 @@
    ════════════════════════════════════════════════════════ */
 .reflectionBlock {
   position: absolute;
-  top: 40.83vw; /* 784 / 1920 */
-  right: 14.79vw; /* (1920-1636) / 1920 */
+  top: 40.83vw;
+  /* 784 / 1920 */
+  right: 14.79vw;
+  /* (1920-1636) / 1920 */
   width: 25vw;
   text-align: right;
   z-index: 5;
@@ -349,13 +390,16 @@
     width: 20vw;
     top: 10vw;
   }
+
   .viewMore {
     left: 50%;
     transform: translateX(-50%);
   }
+
   .archive {
     display: none;
   }
+
   .zineText {
     font-size: 30vw;
   }
@@ -366,6 +410,7 @@
     gap: clamp(20px, 5.33vw, 40px);
     padding: 12px 0;
   }
+
   .earthImg {
     display: none;
   }

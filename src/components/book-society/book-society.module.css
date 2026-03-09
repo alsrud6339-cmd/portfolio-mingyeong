@@ -4,8 +4,11 @@
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .page {
-  min-height: 100vh;
+  height: 100vh;
+  /* 화면 높이에 고정 */
   background: white;
+  overflow: hidden;
+  /* 미세 스크롤 방지 */
 }
 
 /* ════════════════════════════════════════════════════════
@@ -67,49 +70,70 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1920 / 1060;
-  background: #111;
-  border: 1px solid #3b3b3b;
+  /* Figma 프레임 비율 */
+  background: #e8e8e8;
+  /* 회색 외곽 프레임 */
+  border: 1px solid #d7d7d7;
   border-radius: 10px;
   overflow: hidden;
 }
 
-/* 배경 이미지 (Figma 437:421 — opacity 60%) */
+/* 흰 프레임 (Figma 402:582 계열 — bg-white, inset 8/3) */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0.16vw;
+  left: 0.42vw;
+  right: 0.42vw;
+  bottom: 0.36vw;
+  background: white;
+  z-index: 0;
+}
+
+/* 배경 이미지 (Figma 437:421 — opacity 60%, 다른 페이지와 offset 동기화) */
 .bgImg {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0.31vw;
+  left: 0.68vw;
+  right: 0.57vw;
+  bottom: 0.21vw;
   z-index: 1;
   opacity: 0.6;
 }
 
-/* 다크 오버레이 (Figma 437:422 — rgba(0,0,0,0.77)) */
+/* 다크 오버레이 (Figma 437:422 — rgba(0,0,0,0.77), 다른 페이지와 offset 동기화) */
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0.31vw;
+  left: 0.68vw;
+  right: 0.57vw;
+  bottom: 0.21vw;
   background: rgba(0, 0, 0, 0.77);
   z-index: 2;
 }
 
-/* "GIRL" 워터마크 (Figma 437:430) */
-.girlText {
+/* "GIRL" 워터마크 (Figma 437:430)
+   배경을 가득 채우는 거대 텍스트 — 폰트 고유의 내외부 공백 최소화 */
+.workText {
   position: absolute;
-  top: -16.5vw;
-  left: 0;
+  top: 47%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  /* 좌우 여백 제거를 위해 더 바깥으로 배치 */
+  margin: 0;
+  padding: 0;
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 700;
-  font-size: 57.29vw;
-  /* 1100 / 1920 × 100 */
-  line-height: 0.8;
-  color: rgba(0, 0, 0, 0.22);
+  font-size: 60vw;
+  /* 크기를 더 키워 확실하게 채움 */
+  line-height: 0.75;
+  /* 폰트 내부의 상하 여백(Leading)을 극한으로 줄임 */
+  color: rgba(0, 0, 0, 0.26);
   z-index: 3;
   pointer-events: none;
-  letter-spacing: -0.07em;
-  /* -77 / 1100 */
+  letter-spacing: -0.05em;
+  /* 자간을 더 줄여 글자 사이 공백 최소화 */
+  display: block;
 }
 
 /* ════════════════════════════════════════════════════════
@@ -173,8 +197,39 @@
   padding-left: 1.2em;
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 400;
+}
+
+/* 공통 섹션 라벨 (Typography, Reflection 등) */
+.sectionLabel {
+  font-family: var(--font-oswald), "Oswald", sans-serif;
+  font-weight: 500;
+  /* Oswald Medium */
   font-size: clamp(14px, 0.94vw, 18px);
-  color: #dcfadb;
+  color: #e5fbe4;
+  line-height: normal;
+  margin-bottom: clamp(6px, 0.5vw, 10px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Typography 블록 (다른 페이지와 위치 동기화) */
+.typographyBlock {
+  position: absolute;
+  top: 31vw;
+  /* 595 / 1920 */
+  left: 37.45vw;
+  /* 719 / 1920 */
+  transform: translateX(-100%);
+  text-align: right;
+  z-index: 5;
+}
+
+/* 공통 우측 텍스트 본문 (Oswald Regular 18px) */
+.rightBody {
+  font-family: var(--font-oswald), "Oswald", sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 0.94vw, 18px);
+  color: white;
   line-height: 1.6;
 }
 
@@ -190,24 +245,6 @@
   transform: translateX(-100%);
   text-align: right;
   z-index: 5;
-}
-
-.reflectionLabel {
-  font-family: var(--font-oswald), "Oswald", sans-serif;
-  font-weight: 500;
-  /* Oswald Medium */
-  font-size: clamp(14px, 0.94vw, 18px);
-  color: #e5fbe4;
-  line-height: normal;
-  margin-bottom: clamp(6px, 0.5vw, 10px);
-}
-
-.reflectionBody {
-  font-family: var(--font-oswald), "Oswald", sans-serif;
-  font-weight: 500;
-  font-size: clamp(14px, 0.94vw, 18px);
-  color: white;
-  line-height: 1.6;
 }
 
 /* ════════════════════════════════════════════════════════
@@ -260,8 +297,8 @@
     padding: 5%;
   }
 
-  .reflectionLabel,
-  .reflectionBody {
+  .sectionLabel,
+  .rightBody {
     text-align: left;
   }
 
@@ -273,9 +310,9 @@
     margin: 4% auto;
   }
 
-  .girlText {
+  .workText {
     font-size: 30vw;
-    top: -5vw;
+    top: 47%;
   }
 }
 

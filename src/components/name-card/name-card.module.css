@@ -4,8 +4,11 @@
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .page {
-  min-height: 100vh;
+  height: 100vh;
+  /* 화면 높이에 고정 */
   background: white;
+  overflow: hidden;
+  /* 미세 스크롤 방지 */
 }
 
 /* ════════════════════════════════════════════════════════
@@ -18,8 +21,10 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(40px, 5.2vw, 100px); /* 탭 사이 간격 */
-  padding: clamp(16px, 1.67vw, 32px) 0; /* top=32 → 1.67vw */
+  gap: clamp(40px, 5.2vw, 100px);
+  /* 탭 사이 간격 */
+  padding: clamp(16px, 1.67vw, 32px) 0;
+  /* top=32 → 1.67vw */
 }
 
 .navItem {
@@ -37,24 +42,30 @@
 
 .navLabel {
   font-family: var(--font-oswald), "Oswald", sans-serif;
-  font-weight: 300; /* Oswald Light */
-  font-size: clamp(18px, 1.56vw, 30px); /* 30 / 1920 */
+  font-weight: 300;
+  /* Oswald Light */
+  font-size: clamp(18px, 1.56vw, 30px);
+  /* 30 / 1920 */
   color: white;
   line-height: normal;
 }
 
 .navActive .navLabel {
   color: #d5ebd4;
-} /* Name Card 활성 색상 */
+}
+
+/* Name Card 활성 색상 */
 
 .navNum {
   font-family: var(--font-inter), "Inter", sans-serif;
-  font-size: clamp(14px, 0.94vw, 18px); /* 18 / 1920 */
+  font-size: clamp(14px, 0.94vw, 18px);
+  /* 18 / 1920 */
   color: rgba(220, 250, 219, 0.74);
 }
 
 .navCat {
-  width: clamp(36px, 3.13vw, 60px); /* 고양이 실루엣 너비 */
+  width: clamp(36px, 3.13vw, 60px);
+  /* 고양이 실루엣 너비 */
   height: auto;
   opacity: 0.7;
   margin: 0 clamp(10px, 1.3vw, 25px);
@@ -67,8 +78,10 @@
 .card {
   position: relative;
   width: 100%;
-  aspect-ratio: 1920 / 1060; /* Figma 프레임 비율 */
-  background: white; /* 흰 프레임 역할 */
+  aspect-ratio: 1920 / 1060;
+  /* Figma 프레임 비율 */
+  background: white;
+  /* 흰 프레임 역할 */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -96,19 +109,27 @@
 }
 
 /* "GIRL" 워터마크 (Figma 402:800)
-   left=-1, top=-317, 1100px, Oswald Bold, rgba(0,0,0,0.22), tracking=-77px */
+   배경을 가득 채우는 거대 텍스트 — 폰트 고유의 내외부 공백 최소화 */
 .girlText {
   position: absolute;
-  top: -16.51vw; /* -317 / 1920 */
-  left: -0.05vw; /* -1 / 1920 */
+  top: 47%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  /* 좌우 여백 제거를 위해 더 바깥으로 배치 */
+  margin: 0;
+  padding: 0;
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 700;
-  font-size: 57.29vw; /* 1100 / 1920 × 100 */
-  line-height: 0.8;
-  color: rgba(0, 0, 0, 0.22);
+  font-size: 60vw;
+  /* 크기를 더 키워 확실하게 채움 */
+  line-height: 0.75;
+  /* 폰트 내부의 상하 여백(Leading)을 극한으로 줄임 */
+  color: rgba(0, 0, 0, 0.26);
   z-index: 3;
   pointer-events: none;
-  letter-spacing: -0.07em; /* -77px / 1100 */
+  letter-spacing: -0.05em;
+  /* 자간을 더 줄여 글자 사이 공백 최소화 */
+  display: block;
 }
 
 /* ════════════════════════════════════════════════════════
@@ -117,9 +138,12 @@
    ════════════════════════════════════════════════════════ */
 .leftBlock {
   position: absolute;
-  top: 5.42vw; /* 104 / 1920 */
-  left: 4.64vw; /* 89 / 1920 */
-  width: 33.85vw; /* ~650 / 1920 */
+  top: 5.42vw;
+  /* 104 / 1920 */
+  left: 4.64vw;
+  /* 89 / 1920 */
+  width: 33.85vw;
+  /* ~650 / 1920 */
   z-index: 5;
 }
 
@@ -127,7 +151,8 @@
 .txtTitle {
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 400;
-  font-size: clamp(20px, 1.56vw, 30px); /* 30 / 1920 */
+  font-size: clamp(20px, 1.56vw, 30px);
+  /* 30 / 1920 */
   color: #dcfadb;
   line-height: normal;
   margin-bottom: clamp(8px, 0.75vw, 14px);
@@ -137,7 +162,8 @@
 .txtGreen18 {
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 500;
-  font-size: clamp(14px, 0.94vw, 18px); /* 18 / 1920 */
+  font-size: clamp(14px, 0.94vw, 18px);
+  /* 18 / 1920 */
   color: #dcfadb;
   line-height: normal;
   margin-bottom: 4px;
@@ -147,7 +173,8 @@
 .txtBody {
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 400;
-  font-size: clamp(13px, 0.94vw, 18px); /* 18 / 1920 */
+  font-size: clamp(13px, 0.94vw, 18px);
+  /* 18 / 1920 */
   color: white;
   line-height: 1.6;
 }
@@ -158,7 +185,8 @@
   padding-left: 1.2em;
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 400;
-  font-size: clamp(13px, 0.94vw, 18px); /* 18 / 1920 */
+  font-size: clamp(13px, 0.94vw, 18px);
+  /* 18 / 1920 */
   color: white;
   line-height: 1.6;
   margin-bottom: 4px;
@@ -174,14 +202,19 @@
    ════════════════════════════════════════════════════════ */
 .cardsGrid {
   position: absolute;
-  top: 10.1vw; /* 194 / 1920 */
-  left: 43.75vw; /* 840 / 1920 */
-  width: 52.76vw; /* 1013 / 1920 */
+  top: 10.1vw;
+  /* 194 / 1920 */
+  left: 43.75vw;
+  /* 840 / 1920 */
+  width: 52.76vw;
+  /* 1013 / 1920 */
   aspect-ratio: 1013 / 683;
   z-index: 4;
   overflow: hidden;
-  border-radius: 10px; /* Figma: rounded-[10px] */
-  border: 1px solid #3b3b3b; /* Figma: border-[#3b3b3b] */
+  border-radius: 10px;
+  /* Figma: rounded-[10px] */
+  border: 1px solid #3b3b3b;
+  /* Figma: border-[#3b3b3b] */
 }
 
 /* ════════════════════════════════════════════════════════
@@ -190,20 +223,23 @@
    ════════════════════════════════════════════════════════ */
 .reflectionBlock {
   position: absolute;
-  left: calc(
-    37.45vw - 33vw
-  ); /* 오른쪽 끝 37.45vw 기준 (transform 미사용 — Framer Motion 충돌 방지) */
-  top: 39.48vw; /* 758 / 1920 */
+  left: calc(37.45vw - 33vw);
+  /* 오른쪽 끝 37.45vw 기준 (transform 미사용 — Framer Motion 충돌 방지) */
+  top: 39.48vw;
+  /* 758 / 1920 */
   text-align: right;
   z-index: 5;
-  width: 33vw; /* 충분한 너비 */
+  width: 33vw;
+  /* 충분한 너비 */
 }
 
 .reflectionLabel {
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 500;
-  font-size: clamp(14px, 0.94vw, 18px); /* 18px */
-  color: #e5fbe4; /* Figma: #e5fbe4 */
+  font-size: clamp(14px, 0.94vw, 18px);
+  /* 18px */
+  color: #e5fbe4;
+  /* Figma: #e5fbe4 */
   line-height: normal;
   margin-bottom: 4px;
 }
@@ -211,7 +247,8 @@
 .reflectionBody {
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 500;
-  font-size: clamp(13px, 0.94vw, 18px); /* 18px */
+  font-size: clamp(13px, 0.94vw, 18px);
+  /* 18px */
   color: white;
   line-height: 1.6;
   text-align: right;

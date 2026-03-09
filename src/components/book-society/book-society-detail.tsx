@@ -31,9 +31,9 @@ export default function BookSocietyDetail() {
         <div className={styles.overlay} />
 
         {/* ── "GIRL" 워터마크 (Figma 437:430) ── */}
-        <p className={styles.girlText}>GIRL</p>
+        <p className={styles.workText}>WORK</p>
 
-        {/* ══════ 좌측 텍스트 (Figma 437:434 등) ══════ */}
+        {/* ══════ 좌측 텍스트 (Figma 437:434 등 — 다른 페이지와 위계 동기화) ══════ */}
         <motion.div
           className={styles.leftBlock}
           initial={{ opacity: 0, y: 20 }}
@@ -43,56 +43,84 @@ export default function BookSocietyDetail() {
           {/* 타이틀 (Oswald 30px) */}
           <p className={styles.txtTitle}>The Book Society Website Renewal (Partial Design)</p>
 
-          {/* Client 영역 */}
-          <div className={styles.infoBlock} style={{ marginTop: "1.5vw" }}>
-            <p className={styles.txtLabel}>Client</p>
-            <p className={styles.txtValue}>
-              The Book Society (더 북 소사이어티) (서울 기반 출판 컬렉티브)
+          {/* Editorial / Client Info */}
+          <p className={styles.txtGreen18}>Editorial / Web UI Design</p>
+
+          <p className={styles.txtGreen18} style={{ marginTop: "1.87vw" }}>
+            The Book Society (Freelance / via Junosoft)
+          </p>
+
+          <p className={styles.txtGreen18} style={{ marginTop: "0.93vw" }}>
+            2026.01.15 – 2026.01.31
+          </p>
+
+          {/* 본문 설명 */}
+          <div className={styles.txtBody} style={{ marginTop: "0.47vw" }}>
+            <p>
+              <span className={styles.green}>The Book Society</span>는 서울 기반의 출판
+              컬렉티브입니다.
+            </p>
+            <p>본 프로젝트는 웹사이트의 시각적 위계를 재정립하고,</p>
+            <p>
+              더 북 소사이어티만의 편집적 미학을 디지털 환경에 맞게 구현하는 것을 목표로 했습니다.
             </p>
           </div>
 
-          {/* Role 영역 */}
-          <div className={styles.infoBlock} style={{ marginTop: "1vw" }}>
-            <p className={styles.txtLabel}>Role</p>
-            <p className={styles.txtValue}>Web UI Design (Freelance / via Junosoft)</p>
-          </div>
-
-          {/* Period 영역 */}
-          <div className={styles.infoBlock} style={{ marginTop: "1vw" }}>
-            <p className={styles.txtLabel}>Period</p>
-            <p className={styles.txtValue}>2026.01.15 – 2026.01.31</p>
-          </div>
-
-          {/* Contribution 영역 */}
-          <div className={styles.infoBlock} style={{ marginTop: "1vw" }}>
-            <p className={styles.txtLabel}>Contribution</p>
-            <ul className={styles.bullets}>
-              <li>메인/서브 페이지 UI 디자인</li>
-              <li>레이아웃 구조 설계</li>
-              <li>콘텐츠 위계 정리</li>
-              <li>타이포그래피 시스템 정리</li>
-              <li>일부 페이지 리디자인 제안</li>
-            </ul>
-          </div>
-
-          {/* Structure 영역 */}
-          <p className={styles.txtGreen18} style={{ marginTop: "3vw" }}>
-            Structure
+          {/* Design Focus */}
+          <p className={styles.txtGreen18} style={{ marginTop: "1.4vw" }}>
+            Design Focus
           </p>
-          <ul className={styles.bullets} style={{ marginTop: "0.5vw" }}>
+          <ul className={styles.bullets}>
             <li>타이포그래피 중심의 강한 제목 구조 (Oswald / Bebas Neue)</li>
             <li>상단/중단/하단의 명확한 정보 위계 설계</li>
             <li>컬러를 통한 캐릭터 구분</li>
             <li>반복 구조를 활용한 시리즈화 가능성</li>
           </ul>
 
-          <ul className={styles.bullets} style={{ marginTop: "2vw" }}>
-            <li>Title (Name / Archive Year)</li>
-            <li>Identity Block (Name / Role)</li>
-            <li>Short Statement</li>
-            <li>Keyword Line (직무·역할 나열)</li>
-            <li>Visual Background Layer</li>
+          {/* Contribution */}
+          <p className={styles.txtGreen18} style={{ marginTop: "1.4vw" }}>
+            Structure & Contribution
+          </p>
+          <ul className={styles.bullets}>
+            <li>메인/서브 페이지 UI 디자인</li>
+            <li>레이아웃 구조 설계</li>
+            <li>콘텐츠 위계 정리</li>
+            <li>타이포그래피 시스템 정리</li>
+            <li>일부 페이지 리디자인 제안</li>
           </ul>
+        </motion.div>
+
+        {/* ══════ Typography 블록 (다른 페이지와 동기화) ══════ */}
+        <motion.div
+          className={styles.typographyBlock}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          <p className={styles.sectionLabel}>Typography</p>
+          <p className={styles.rightBody}>
+            <span className={styles.greenMedium}>OSWALD</span>와{" "}
+            <span className={styles.greenMedium}>Bebas Neue</span>를 사용하여
+            <br />
+            강한 타이틀 중심 구조를 설계했습니다.
+          </p>
+        </motion.div>
+
+        {/* ══════ Reflection 블록 (다른 페이지와 동기화) ══════ */}
+        <motion.div
+          className={styles.reflectionBlock}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <p className={styles.sectionLabel}>Reflection</p>
+          <p className={styles.rightBody}>
+            이 프로젝트를 통해
+            <br />
+            출판물의 물리적 감각을 웹 레이아웃으로
+            <br />
+            치환하는 과정에서의 시각적 질서를 탐구했습니다.
+          </p>
         </motion.div>
 
         {/* ══════ 우측 사진 영역 (Figma 437:448) ══════ */}

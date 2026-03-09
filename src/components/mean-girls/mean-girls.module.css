@@ -4,8 +4,11 @@
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .page {
-  min-height: 100vh;
+  height: 100vh;
+  /* 화면 높이에 고정 */
   background: white;
+  overflow: hidden;
+  /* 미세 스크롤 방지 */
 }
 
 /* ════════════════════════════════════════════════════════
@@ -14,12 +17,15 @@
    ════════════════════════════════════════════════════════ */
 .nav {
   position: relative;
-  z-index: 10; /* 모든 레이어 위에 표시 */
+  z-index: 10;
+  /* 모든 레이어 위에 표시 */
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(40px, 5.2vw, 100px); /* 탭 사이 간격 */
-  padding: clamp(16px, 1.67vw, 32px) 0; /* top=32 → 1.67vw */
+  gap: clamp(40px, 5.2vw, 100px);
+  /* 탭 사이 간격 */
+  padding: clamp(16px, 1.67vw, 32px) 0;
+  /* top=32 → 1.67vw */
 }
 
 .navItem {
@@ -37,24 +43,30 @@
 
 .navLabel {
   font-family: var(--font-oswald), "Oswald", sans-serif;
-  font-weight: 300; /* Oswald Light */
-  font-size: clamp(18px, 1.56vw, 30px); /* 30 / 1920 */
+  font-weight: 300;
+  /* Oswald Light */
+  font-size: clamp(18px, 1.56vw, 30px);
+  /* 30 / 1920 */
   color: white;
   line-height: normal;
 }
 
 .navActive .navLabel {
   color: #d4ead3;
-} /* Mean Girls 활성 색상 */
+}
+
+/* Mean Girls 활성 색상 */
 
 .navNum {
   font-family: var(--font-inter), "Inter", sans-serif;
-  font-size: clamp(14px, 0.94vw, 18px); /* 18 / 1920 */
+  font-size: clamp(14px, 0.94vw, 18px);
+  /* 18 / 1920 */
   color: rgba(220, 250, 219, 0.74);
 }
 
 .navCat {
-  width: clamp(36px, 3.13vw, 60px); /* 고양이 실루엣 */
+  width: clamp(36px, 3.13vw, 60px);
+  /* 고양이 실루엣 */
   height: auto;
   opacity: 0.7;
   margin: 0 clamp(10px, 1.3vw, 25px);
@@ -67,9 +79,12 @@
 .card {
   position: relative;
   width: 100%;
-  aspect-ratio: 1920 / 1060; /* Figma 프레임 비율 */
-  background: #e8e8e8; /* 402:581 회색 외곽 */
-  border: 1px solid #d7d7d7; /* Figma: border */
+  aspect-ratio: 1920 / 1060;
+  /* Figma 프레임 비율 */
+  background: #e8e8e8;
+  /* 402:581 회색 외곽 */
+  border: 1px solid #d7d7d7;
+  /* Figma: border */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -109,26 +124,36 @@
 }
 
 /* "EDIT" 워터마크 (Figma 402:586)
-   left=-10, top=-300, 1100px, Oswald Bold, rgba(0,0,0,0.26), tracking=-22px */
+   배경을 가득 채우는 거대 텍스트 — 폰트 고유의 내외부 공백 최소화 */
 .editText {
   position: absolute;
-  top: -15.63vw; /* -300 / 1920 */
-  left: -0.52vw; /* -10 / 1920 */
+  top: 47%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  /* 좌우 여백 제거를 위해 더 바깥으로 배치 */
+  margin: 0;
+  padding: 0;
   font-family: var(--font-oswald), "Oswald", sans-serif;
   font-weight: 700;
-  font-size: 57.29vw; /* 1100 / 1920 × 100 */
-  line-height: 0.8;
-  color: rgba(0, 0, 0, 0.26); /* 검정 26% — 다크 테마 */
+  font-size: 60vw;
+  /* 크기를 더 키워 확실하게 채움 */
+  line-height: 0.75;
+  /* 폰트 내부의 상하 여백(Leading)을 극한으로 줄임 */
+  color: rgba(0, 0, 0, 0.26);
   z-index: 3;
   pointer-events: none;
-  letter-spacing: -0.02em; /* -22 / 1100 */
+  letter-spacing: -0.05em;
+  /* 자간을 더 줄여 글자 사이 공백 최소화 */
+  display: block;
 }
 
 /* (archive) (Figma 402:584 — left=1453, top=569) */
 .archive {
   position: absolute;
-  left: 75.68vw; /* 1453 / 1920 */
-  top: 29.64vw; /* 569 / 1920 */
+  left: 75.68vw;
+  /* 1453 / 1920 */
+  top: 29.64vw;
+  /* 569 / 1920 */
   font-family: var(--font-inter), "Inter", sans-serif;
   font-weight: 400;
   font-size: clamp(14px, 0.94vw, 18px);
@@ -142,9 +167,12 @@
    ════════════════════════════════════════════════════════ */
 .leftBlock {
   position: absolute;
-  top: 6.15vw; /* 118 / 1920 */
-  left: 5.94vw; /* 114 / 1920 */
-  width: 29.17vw; /* ~560 / 1920 */
+  top: 6.15vw;
+  /* 118 / 1920 */
+  left: 5.94vw;
+  /* 114 / 1920 */
+  width: 29.17vw;
+  /* ~560 / 1920 */
   z-index: 5;
 }
 
@@ -192,10 +220,13 @@
 .green {
   color: #dcfadb;
 }
+
 .greenMedium {
   color: #dcfadb;
   font-weight: 500;
-} /* Oswald Medium */
+}
+
+/* Oswald Medium */
 .pink {
   color: #f000ff;
 }
@@ -206,12 +237,16 @@
    ════════════════════════════════════════════════════════ */
 .typographyBlock {
   position: absolute;
-  left: 35.63vw; /* 684 / 1920 — 오른쪽 끝 */
-  transform: translateX(-100%); /* 왼쪽으로 밀어 우측 정렬 */
-  top: 34.22vw; /* 657 / 1920 */
+  left: 35.63vw;
+  /* 684 / 1920 — 오른쪽 끝 */
+  transform: translateX(-100%);
+  /* 왼쪽으로 밀어 우측 정렬 */
+  top: 34.22vw;
+  /* 657 / 1920 */
   text-align: right;
   z-index: 5;
-  white-space: nowrap; /* 줄바꿈 방지 */
+  white-space: nowrap;
+  /* 줄바꿈 방지 */
 }
 
 .sectionLabel {
@@ -239,9 +274,11 @@
    ════════════════════════════════════════════════════════ */
 .reflectionBlock {
   position: absolute;
-  left: 35.63vw; /* 684 / 1920 — Typography와 같은 우측 정렬 */
+  left: 35.63vw;
+  /* 684 / 1920 — Typography와 같은 우측 정렬 */
   transform: translateX(-100%);
-  top: 42.66vw; /* 819 / 1920 */
+  top: 42.66vw;
+  /* 819 / 1920 */
   text-align: right;
   z-index: 5;
 }
@@ -252,9 +289,12 @@
    ════════════════════════════════════════════════════════ */
 .rightBlock {
   position: absolute;
-  top: 11.09vw; /* 213 / 1920 */
-  left: 42.34vw; /* 813 / 1920 */
-  width: 54.22vw; /* 1041 / 1920 */
+  top: 11.09vw;
+  /* 213 / 1920 */
+  left: 42.34vw;
+  /* 813 / 1920 */
+  width: 54.22vw;
+  /* 1041 / 1920 */
   z-index: 5;
 }
 
@@ -269,8 +309,10 @@
 /* 미니 내비 (Figma 402:595~599 — Oswald Regular 9.4px, #aa0c1c) */
 .miniNav {
   position: absolute;
-  top: 16.19%; /* (315.85-213)/636 */
-  left: 42.44%; /* (1254.88-813)/1041 */
+  top: 16.19%;
+  /* (315.85-213)/636 */
+  left: 42.44%;
+  /* (1254.88-813)/1041 */
   display: flex;
   gap: clamp(8px, 0.94vw, 18px);
   z-index: 2;
@@ -284,7 +326,8 @@
 /* Mean girls 링크 (Figma 402:607 — Oswald Light 25px, underline) */
 .meanLink {
   position: absolute;
-  top: 3.9%; /* (237.84-213)/636 */
+  top: 3.9%;
+  /* (237.84-213)/636 */
   right: 0;
   z-index: 2;
   font-family: var(--font-oswald), "Oswald", sans-serif;
@@ -297,8 +340,10 @@
 /* 영화 타이틀 (Figma 402:600~606 — Bebas Neue 41.875px, #aa0c1c) */
 .films {
   position: absolute;
-  top: 52.03%; /* (543.92-213)/636 */
-  left: 2.4%; /* (837.94-813)/1041 */
+  top: 52.03%;
+  /* (543.92-213)/636 */
+  left: 2.4%;
+  /* (837.94-813)/1041 */
   z-index: 2;
   font-family: var(--font-bebas-neue), "Bebas Neue", sans-serif;
   font-weight: 400;
@@ -310,8 +355,10 @@
 /* 화살표 (Figma 402:608 — left=1643, top=543, 61×57) */
 .arrow {
   position: absolute;
-  top: 52.03%; /* (543.92-213)/636 */
-  left: 79.74%; /* (1643.09-813)/1041 */
+  top: 52.03%;
+  /* (543.92-213)/636 */
+  left: 79.74%;
+  /* (1643.09-813)/1041 */
   width: clamp(30px, 3.16vw, 61px);
   aspect-ratio: 61 / 57;
   z-index: 2;
@@ -320,8 +367,10 @@
 /* VIEW MORE (Figma 402:610~612 — circle left=1240, top=437, 187×187) */
 .viewMore {
   position: absolute;
-  left: 41.02%; /* (1240-813)/1041 */
-  top: 35.22%; /* (437-213)/636 */
+  left: 41.02%;
+  /* (1240-813)/1041 */
+  top: 35.22%;
+  /* (437-213)/636 */
   width: clamp(100px, 9.74vw, 187px);
   height: clamp(100px, 9.74vw, 187px);
   display: flex;
@@ -402,9 +451,11 @@
     bottom: 5%;
     transform: translateX(-50%);
   }
+
   .archive {
     display: none;
   }
+
   .editText {
     font-size: 30vw;
   }
